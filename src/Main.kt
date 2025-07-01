@@ -1,5 +1,5 @@
 fun main() {
-    for (num in 1 .. 200) {
+    for (num in 1 .. 255) {
         var output =
             buildString {
                 if (num % 11 == 0) append("Bong") else {
@@ -11,6 +11,10 @@ fun main() {
                     val index = indexOf("B").takeIf { it != -1 } ?: count()
                     insert(index, "Fezz")
                 }
+            }
+        if (num % 17 == 0) {
+            val words = output.split("(?=[A-Z])".toRegex())
+            output = words.reversed().joinToString("")
             }
         if (output == "") output = num.toString()
         println(output)
